@@ -1,5 +1,21 @@
 # deku.nvim
 
+<p align="center">
+  <q>
+    Ah. So you have finally returned... You never fail to impress!
+  </q>
+  &mdash;
+  <i>
+    The Great Deku Tree
+  </i>
+</p>
+
+<p align="center">
+  <img width="80%" src="./docs/assets/img/screenshot.png"/>
+</p>
+
+---
+
 A pastel, fairy-like Neovim colorscheme 🌳
 
 ## Installation
