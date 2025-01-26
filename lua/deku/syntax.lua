@@ -98,9 +98,9 @@ local syntax = lush(function()
     -- Left blank, hidden |hl-Ignore| (NOTE: May be invisible here in template)
     Ignore         { },
     -- Any erroneous construct
-    Error          { fg = Normal.bg, bg = base.Ganon.fg.ro(-5).da(15) },
+    Error          { fg = base.Ganon.fg.readable(), bg = base.Ganon.fg.ro(-5).da(15) },
     -- Anything that needs extra attention; mostly the keywords TODO FIXME XXX
-    Todo           { fg = Normal.bg, bg = base.Zelda.fg.ro(40).de(50).li(10) },
+    Todo           { fg = base.Zelda.fg.readable(), bg = base.Zelda.fg.ro(40).de(50).li(10) },
   }
 end)
 
