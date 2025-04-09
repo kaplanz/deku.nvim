@@ -125,9 +125,9 @@ local builtin = lush(function()
     -- Popup menu: Normal item.
     Pmenu          { CursorColumn },
     -- Popup menu: Selected item.
-    PmenuSel       { fg = Pmenu.bg, bg = base.Navi.fg },
+    PmenuSel       { base.Nayru },
     -- Popup menu: Normal item "kind"
-    PmenuKind      { PmenuSel, gui = "reverse" },
+    PmenuKind      { base.Navi },
     -- Popup menu: Selected item "kind"
     PmenuKindSel   { PmenuSel },
     -- Popup menu: Normal item "extra text"
