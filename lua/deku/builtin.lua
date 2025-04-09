@@ -115,7 +115,7 @@ local builtin = lush(function()
     -- |hl-EndOfBuffer|.
     NonText        { base.Robbie },
     -- Normal text in floating windows.
-    NormalFloat    { },
+    NormalFloat    { bg = base.Impa.bg.da(20) },
     -- Border of floating windows.
     FloatBorder    { },
     -- Title of floating windows.
