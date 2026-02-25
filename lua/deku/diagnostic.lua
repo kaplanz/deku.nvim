@@ -23,7 +23,7 @@ local diagnostic = lush(function()
     DiagnosticError            { base.Ganon },
     -- Used as the base highlight group. Other Diagnostic highlights link to
     -- this by default (except Underline)
-    DiagnosticWarn             { base.Daruk },
+    DiagnosticWarn             { base.Midna },
     -- Used as the base highlight group. Other Diagnostic highlights link to
     -- this by default (except Underline)
     DiagnosticInfo             { base.Zelda },

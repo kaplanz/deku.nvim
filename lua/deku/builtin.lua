@@ -6,6 +6,12 @@
 local lush = require("lush")
 
 local base = require("deku.base")
+local cfg  = require("deku.config")
+
+-- The base background color, used for derived highlight groups regardless of
+-- whether transparent mode is active. In transparent mode Normal.bg is nil,
+-- but CursorColumn / Cursor / NormalFloat still need a concrete color.
+local bg = base.Impa.bg
 
 -- lush-spec definition
 --
@@ -19,7 +25,9 @@ local builtin = lush(function()
     -- Normal text
     --
     -- Note: Normal must be set first as directed by |:hi-normal-cterm|.
-    Normal         { fg = base.Rhoam.fg, bg = base.Impa.bg },
+    -- When cfg.opts.transparent is true the bg key is nil (omitted), so
+    -- guibg is not set and the terminal emulator's background shows through.
+    Normal         { fg = base.Hylia.fg, bg = not cfg.opts.transparent and bg or nil },
 
     -- The following are the Neovim highlight groups, mostly used for styling
     -- UI elements.
@@ -36,9 +44,9 @@ local builtin = lush(function()
     ColorColumn    { base.Nayru },
     -- Placeholder characters substituted for concealed text
     -- (see 'conceallevel')
-    Conceal        { base.Robbie },
+    Conceal        { base.Ruto },
     -- Character under the cursor
-    Cursor         { fg = Normal.bg, bg = Normal.fg },
+    Cursor         { fg = bg, bg = Normal.fg },
     -- Highlighting a search pattern under the cursor (see 'hlsearch')
     CurSearch      { base.Din },
     -- Character under the cursor when |language-mapping| is used
@@ -47,7 +55,7 @@ local builtin = lush(function()
     -- Like Cursor, but used when in IME mode |CursorIM|
     CursorIM       { base.Cursor },
     -- Screen-column at the cursor, when 'cursorcolumn' is set.
-    CursorColumn   { bg = Normal.bg.li(10) },
+    CursorColumn   { base.Sheik },
     -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if
     -- foreground (ctermfg OR guifg) is not set.
     CursorLine     { CursorColumn },
@@ -63,7 +71,7 @@ local builtin = lush(function()
     DiffText       { fd = Normal.fg, bg = base.Din.bg.ro(70).li(15) },
     -- Filler lines (~) after the end of the buffer. By default, this is
     -- highlighted like |hl-NonText|.
-    EndOfBuffer    { base.Robbie },
+    EndOfBuffer    { base.Ruto },
     -- Cursor in a focused terminal
     TermCursor     { Cursor },
     -- Cursor in an unfocused terminal
@@ -71,11 +79,11 @@ local builtin = lush(function()
     -- Error messages on the command line
     ErrorMsg       { bg = base.Din.bg.ro(30).sa(40) },
     -- Column separating vertically split windows
-    VertSplit      { base.Robbie },
+    VertSplit      { base.Ruto },
     -- Line used for closed folds
     Folded         { },
     -- 'foldcolumn'
-    FoldColumn     { base.Robbie },
+    FoldColumn     { base.Ruto },
     -- Column where |signs| are displayed
     SignColumn     { FoldColumn },
     -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
@@ -84,7 +92,7 @@ local builtin = lush(function()
     Substitute     { base.Din },
     -- Line number for ":number" and ":#" commands, and when 'number' or
     -- 'relativenumber' option is set.
-    LineNr         { base.Robbie },
+    LineNr         { base.Ruto },
     -- Line number for when the 'relativenumber' option is set, above the cursor
     -- line
     LineNrAbove    { LineNr },
@@ -113,13 +121,13 @@ local builtin = lush(function()
     -- characters that do not really exist in the text (e.g., ">" displayed when
     -- a double-wide character doesn't fit at the end of the line). See also
     -- |hl-EndOfBuffer|.
-    NonText        { base.Robbie },
+    NonText        { base.Ruto },
     -- Normal text in floating windows.
     NormalFloat    { bg = base.Impa.bg.da(20) },
     -- Border of floating windows.
     FloatBorder    { },
     -- Title of floating windows.
-    FloatTitle     { base.Daruk, gui = "bold" },
+    FloatTitle     { base.Midna, gui = "bold" },
     -- Normal text in non-current windows
     NormalNC       { Normal },
     -- Popup menu: Normal item.
@@ -175,24 +183,24 @@ local builtin = lush(function()
     -- Tab pages line, active tab page label
     TabLineSel     { PmenuSel },
     -- Titles for output from ":set all", ":autocmd" etc.
-    Title          { base.Daruk, gui = "bold" },
+    Title          { base.Midna, gui = "bold" },
     -- Visual mode selection.
     Visual         { base.Farore },
     -- Visual mode selection when vim is "Not Owning the Selection".
     VisualNOS      { base.Din },
     -- Warning messages
-    WarningMsg     { bg = base.Daruk.fg.ro(15).de(60).da(40) },
+    WarningMsg     { bg = base.Midna.fg.ro(15).de(60).da(40) },
     -- "nbsp", "space", "tab" and "trail" in 'listchars'
-    Whitespace     { base.Robbie },
+    Whitespace     { base.Ruto },
     -- Separator between window splits. Inherits from |hl-VertSplit| by default,
     -- which it will replace eventually.
     Winseparator   { VertSplit },
     -- Current match in 'wildmenu' completion
     WildMenu       { gui = "reverse" },
     -- Window bar of current window
-    WinBar         { base.Purah },
+    WinBar         { base.Sheik },
     -- Window bar of not-current windows
-    WinBarNC       { base.Purah },
+    WinBarNC       { base.Sheik },
   }
 end)
 

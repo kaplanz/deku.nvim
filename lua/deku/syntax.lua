@@ -25,10 +25,10 @@ local syntax = lush(function()
     -- Uncomment and edit if you want more specific syntax highlighting.
 
     -- Any comment
-    Comment        { base.Robbie, gui = "italic" },
+    Comment        { base.Ruto, gui = "italic" },
 
     -- (*) Any constant
-    Constant       { fg = base.Ganon.fg.ro(10).de(15).li(15) },
+    Constant       { fg = base.Ganon.fg.ro(10).de(15) },
     --   A string constant: "this is a string"
     String         { fg = base.Link.fg },
     --   A character constant: 'c', '\n'
@@ -41,9 +41,9 @@ local syntax = lush(function()
     Float          { fg = Number.fg.ro(15) },
 
     -- (*) Any variable name
-    Identifier     { fg = base.Navi.fg.ro(30).li(40) },
+    Identifier     { fg = base.Navi.fg.ro(30) },
     --   Function name (also: methods for classes)
-    Function       { fg = base.Majora.fg.ro(15).li(35) },
+    Function       { fg = base.Majora.fg.ro(15) },
 
     -- (*) Any statement
     Statement      { base.Navi },
@@ -81,7 +81,7 @@ local syntax = lush(function()
     Typedef        { Keyword, gui = "bold" },
 
     -- (*) Any special symbol
-    Special        { fg = base.Navi.fg.li(45) },
+    Special        { fg = base.Navi.fg },
     --   Special character in a constant
     SpecialChar    { Special, gui = "bold" },
     --   You can use CTRL-] on this
